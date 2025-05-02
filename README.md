@@ -1,8 +1,9 @@
 # Laporan Proyek Machine Learning - Muhammad Azhar Fikri
-
-![hy](assets/hyouka.gif)
+Proyek Akhir dari kelas Machine Learning Terapan.
 
 ## Project Overview
+
+![hy](assets/hyouka.gif)
 
 Anime adalah bentuk hiburan asal Jepang yang telah mendunia, mencakup berbagai genre seperti aksi, drama, fantasi, dan romansa. Dengan ribuan judul yang tersedia, pengguna sering kali kesulitan memilih anime yang sesuai dengan preferensi mereka. Oleh karena itu, sistem rekomendasi menjadi alat penting untuk membantu pengguna menemukan anime yang relevan dengan minat mereka.
 
