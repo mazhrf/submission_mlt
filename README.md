@@ -52,17 +52,27 @@ Untuk mencapai tujuan di atas, digunakan beberapa pendekatan berikut:
   Digunakan untuk mengukur efektivitas pengelompokan (clustering) dalam sistem rekomendasi. Davies-Bouldin menilai seberapa baik cluster dipisahkan (semakin rendah semakin baik), sedangkan Calinski-Harabasz mengukur rasio antara variasi antar cluster dan dalam cluster (semakin tinggi semakin baik).
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
 
-Selanjutnya, uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+Dataset yang digunakan dalam proyek ini diperoleh dari platform [Kaggle](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database), yang berjudul **Anime Recommendations Database**. Dataset ini berisi informasi tentang berbagai anime yang dapat digunakan untuk membangun sistem rekomendasi.
 
-Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+Dataset terdiri dari **12.294 entri** yang mencakup berbagai atribut penting yang berhubungan dengan karakteristik dan popularitas anime. Informasi ini sangat berguna untuk membangun sistem rekomendasi berbasis konten maupun kolaboratif.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data beserta insight atau exploratory data analysis.
+### Sumber Dataset
+Kaggle: [Anime Recommendations Database](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database)
+
+### Variabel-variabel pada Dataset Anime
+
+Berikut adalah deskripsi dari setiap fitur yang terdapat dalam dataset utama `anime.csv`:
+
+- **anime_id**: ID unik untuk masing-masing anime. Digunakan sebagai identifikasi primer.
+- **name**: Nama dari anime.
+- **genre**: Genre atau kategori dari anime. Beberapa anime memiliki lebih dari satu genre, dipisahkan oleh koma.
+- **type**: Jenis anime (misalnya: TV, Movie, OVA, Special, dll).
+- **episodes**: Jumlah episode dari anime. Nilai ini dapat berupa angka atau string `'Unknown'` jika data tidak tersedia.
+- **rating**: Rata-rata rating yang diberikan oleh pengguna terhadap anime tersebut (skala 1–10).
+- **members**: Jumlah anggota yang telah memberikan rating atau yang menambahkan anime tersebut ke daftar tontonan mereka.
+
+### Exploratory Data Analysis (EDA)
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
