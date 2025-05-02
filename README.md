@@ -2,10 +2,6 @@
 
 ## Project Overview
 
-## Project Overview
-
-## Project Overview
-
 Anime adalah bentuk hiburan asal Jepang yang telah mendunia, mencakup berbagai genre seperti aksi, drama, fantasi, dan romansa. Dengan ribuan judul yang tersedia, pengguna sering kali kesulitan memilih anime yang sesuai dengan preferensi mereka. Oleh karena itu, sistem rekomendasi menjadi alat penting untuk membantu pengguna menemukan anime yang relevan dengan minat mereka.
 
 Sistem rekomendasi anime dapat dibangun dengan dua pendekatan utama:
