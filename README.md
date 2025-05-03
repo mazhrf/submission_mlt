@@ -139,11 +139,11 @@ Content-Based Filtering memberikan rekomendasi berdasarkan kemiripan antara item
 **Cosine Similarity** mengukur sudut kosinus antara dua vektor dalam ruang vektor. Nilai cosine similarity berada pada rentang 0 hingga 1. Nilai 1 menunjukkan bahwa kedua vektor sangat mirip (arahnya sama), sedangkan nilai 0 menunjukkan bahwa kedua vektor benar-benar berbeda (arahnya tegak lurus).
 
 **Rumus Cosine Similarity:**
-```
+
 $$
 \text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \times \|B\|}
 $$
-```
+
 di mana:
 - \( A \) dan \( B \) adalah vektor fitur dari dua anime.
 - \( A \cdot B \) adalah dot product antara dua vektor.
