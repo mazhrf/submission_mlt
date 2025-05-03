@@ -184,6 +184,7 @@ $$
 \hat{r}_{u,i} = \frac{\sum_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}}{\sum_{j \in N_k(i)} |\text{sim}(i, j)|}
 $$
 
+
 Keterangan:
 - $\hat{r}_{u,i}$: Prediksi rating dari pengguna $u$ terhadap anime $i$.
 - $\text{sim}(i, j)$: Skor kemiripan antara anime $i$ dan anime $j$.
