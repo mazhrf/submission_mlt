@@ -279,7 +279,7 @@ dbs = davies_bouldin_score(anew, aniname)
 print(f"Davies-Bouldin: {dbs}")
 ```
 
-Nilai **Davies-Bouldin: 1.7372932679932307**  
+Nilai Davies-Bouldin: **1.7372932679932307**  
 Interpretasi: Nilai ini masih tergolong **cukup**, namun menunjukkan bahwa antar cluster belum sepenuhnya terpisah sempurna.
 
 ### 2. Calinski-Harabasz (CH)
@@ -304,16 +304,13 @@ ch = calinski_harabasz_score(anew, aniname)
 print("Calinski-Harabasz: ", ch)
 ```
 
-Nilai **Calinski-Harabasz = 5.687692131433239**  
+Nilai Calinski-Harabasz = **5.687692131433239**  
 Interpretasi: Nilai ini **cukup rendah**, yang menunjukkan bahwa variansi antar cluster dan dalam cluster masih belum optimal.
 
 ### Kesimpulan
 
-- Davies-Bouldin Index sebesar **1.737** menunjukkan cluster yang **cukup baik**, namun bisa ditingkatkan.
-- Calinski-Harabasz Index sebesar **5.688** mengindikasikan bahwa struktur cluster masih belum sangat kuat.
+- Davies-Bouldin sebesar **1.737** menunjukkan cluster yang **cukup baik**, namun bisa ditingkatkan.
+- Calinski-Harabasz sebesar **5.688** mengindikasikan bahwa struktur cluster masih belum sangat kuat.
 
-**---Ini adalah bagian akhir laporan---**
-
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+## Referensi
+1.
