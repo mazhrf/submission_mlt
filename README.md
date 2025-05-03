@@ -164,7 +164,7 @@ Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai 
 #### Penerapan Content-Based Filtering:
 
 **Rekomendasi untuk `Naruto`**
-```
+```python
 recommend_anime('Naruto')
 ```
 
@@ -177,7 +177,7 @@ recommend_anime('Naruto')
 | 5 | Naruto Shippuuden Movie 4 The Lost Tower | Action, Comedy, Martial Arts, Shounen, Super Power |
 
 **Rekomendasi untuk `Bungou Stray Dogs`**
-```
+```python
 recommend_anime('Bungou Stray Dogs')
 ```
 
@@ -215,6 +215,44 @@ Keterangan:
 - Rentan terhadap masalah cold-start (pengguna baru atau item baru tanpa cukup interaksi).
 - Performa menurun pada dataset yang sangat besar tanpa teknik optimasi (misalnya matrix factorization atau model-based CF).
 - Dapat menghasilkan rekomendasi yang bias jika sebagian besar pengguna memberikan rating serupa.
+
+#### Penerapan Collaborative Filtering:
+
+**Rekomendasi untuk `Shigatsu wa Kimi no Uso`**
+```python
+recommend_nimek('Shigatsu wa Kimi no Uso')
+```
+
+| No | Nama Anime                        | Similarity Score |
+| -- | --------------------------------- | ---------------- |
+| 1  | Shigatsu wa Kimi no Uso           | 100.0%           |
+| 2  | Haikyuu Second Season             | 99.99%           |
+| 3  | Mushishi Zoku Shou 2nd Season     | 99.96%           |
+| 4  | Code Geass Hangyaku no Lelouch R2 | 99.94%           |
+| 5  | Hajime no Ippo                    | 99.91%           |
+| 6  | Code Geass Hangyaku no Lelouch    | 99.91%           |
+| 7  | Cowboy Bebop                      | 99.90%           |
+| 8  | One Punch Man                     | 99.90%           |
+| 9  | Monogatari Series Second Season   | 99.88%           |
+| 10 | Mushishi Zoku Shou                | 99.88%           |
+
+**Rekomendasi untuk `Kimi no Na wa`**
+```python
+recommend_nimek('Kimi no Na wa')
+```
+
+| No | Nama Anime                                      | Similarity Score |
+| -- | ----------------------------------------------- | ---------------- |
+| 1  | Kimi no Na wa                                   | 100.0%           |
+| 2  | Kahei no Umi                                    | 99.96%           |
+| 3  | Mogura no Motoro                                | 99.87%           |
+| 4  | Gintama Movie Kanketsuhen Yorozuya yo Eien Nare | 99.73%           |
+| 5  | Koe no Katachi                                  | 99.68%           |
+| 6  | Shenmi Shijie Lixian Ji                         | 99.63%           |
+| 7  | Okaachan Gomen ne                               | 99.63%           |
+| 8  | Mirai ni Mukete Bousai wo Kangaeru              | 99.63%           |
+| 9  | Shaka no Shougai                                | 99.63%           |
+| 10 | Sen to Chihiro no Kamikakushi                   | 99.56%           |
 
 ## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
