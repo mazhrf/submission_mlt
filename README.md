@@ -144,10 +144,10 @@ $$
 \text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \times \|B\|}
 $$
 
-di mana:
-- \( A \) dan \( B \) adalah vektor fitur dari dua anime.
-- \( A \cdot B \) adalah dot product antara dua vektor.
-- \( \|A\| \) dan \( \|B\| \) adalah norma (panjang) masing-masing vektor.
+Keterangan:
+- A dan B adalah vektor fitur dari dua anime.
+- A · B adalah dot product antara dua vektor.
+- ||A|| dan ||B|| adalah norma (panjang) masing-masing vektor.
 
 Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai pengguna akan direkomendasikan.
 
@@ -163,7 +163,7 @@ Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai 
 
 ### 2. Collaborative Filtering dengan K-Nearest Neighbors (KNN)
 
-Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengguna, seperti rating. Pendekatan **User-Based KNN** mencari pengguna yang mirip (nearest neighbors) berdasarkan pola rating, lalu merekomendasikan anime yang disukai oleh tetangga terdekat tersebut.
+Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengguna, seperti rating. Pendekatan **User-Based KNN** mencari pengguna yang mirip berdasarkan pola rating, lalu merekomendasikan anime yang disukai oleh nearest neighbor.
 
 **Langkah-langkah utama:**
 1. Menghitung kemiripan antar pengguna atau item (misalnya dengan cosine similarity).
@@ -171,15 +171,19 @@ Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengg
 3. Mengambil item yang disukai oleh tetangga tersebut dan belum pernah ditonton oleh pengguna target.
 4. Mengurutkan item berdasarkan skor gabungan dan merekomendasikan top-N item.
 
+$$
+Euclidean Distance(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+$$
+
 #### Kelebihan:
 - Menangkap pola kolektif atau tren dalam komunitas pengguna.
 - Dapat memberikan rekomendasi yang bersifat "surprising" atau tidak terduga, karena berasal dari preferensi pengguna lain.
-- Tidak membutuhkan deskripsi konten dari item (tidak perlu metadata).
+- Tidak membutuhkan informasi konten dari item (tidak perlu metadata seperti genre).
 
 #### Kekurangan:
-- Rentan terhadap masalah cold-start (untuk pengguna/item baru tanpa cukup interaksi).
-- Performa menurun pada dataset yang sangat besar tanpa optimasi.
-- Bisa menghasilkan rekomendasi bias jika mayoritas pengguna memberikan rating serupa.
+- Rentan terhadap masalah cold-start (pengguna baru atau item baru tanpa cukup interaksi).
+- Performa menurun pada dataset yang sangat besar tanpa teknik optimasi (misalnya matrix factorization atau model-based CF).
+- Dapat menghasilkan rekomendasi yang bias jika sebagian besar pengguna memberikan rating serupa.
 
 ## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
