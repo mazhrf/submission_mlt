@@ -53,7 +53,7 @@ Untuk mencapai tujuan di atas, digunakan beberapa pendekatan berikut:
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini diperoleh dari platform [Kaggle](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database), yang berjudul **Anime Recommendations Database**. Dataset ini berisi informasi tentang berbagai anime yang dapat digunakan untuk membangun sistem rekomendasi.
+Dataset yang digunakan dalam proyek ini diperoleh dari platform [Kaggle](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database), yang berjudul **Anime Recommendations Database**. Dataset ini berisi informasi preferensi anime berdasarkan data 76,000 users pada [MAL](myanimelist.net) 8 tahun yang lalu.
 
 Dataset terdiri dari **12.294 entri** yang mencakup berbagai atribut penting yang berhubungan dengan karakteristik dan popularitas anime. Informasi ini sangat berguna untuk membangun sistem rekomendasi berbasis konten maupun kolaboratif.
 
@@ -130,7 +130,7 @@ Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 | 10  | Gintama 1                                                 | 9.16   |
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
+Dalam proyek ini, dua algoritma utama digunakan untuk membangun sistem rekomendasi, yaitu **Cosine Similarity** untuk pendekatan *Content-Based Filtering* dan **K-Nearest Neighbors (KNN)** untuk pendekatan *Collaborative Filtering*.
 
 **Rubrik/Kriteria Tambahan (Opsional)**: 
 - Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
