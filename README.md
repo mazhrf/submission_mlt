@@ -313,7 +313,10 @@ Interpretasi: Nilai ini **cukup rendah**, yang menunjukkan bahwa variansi antar 
 - Calinski-Harabasz sebesar **5.688** mengindikasikan bahwa struktur cluster masih belum sangat kuat.
 
 ## Referensi
-1. Ayundini, N., & Adiwijaya. (2021). Content-Based Anime Recommendation. *Medium*. https://medium.com/web-mining-is688-spring-2021/content-based-anime-recommendation-4d74038fab67  
-2. Tamtomo, D. G. (2023). Sistem Rekomendasi Anime Menggunakan Collaborative Filtering dan Content-Based Filtering. *TNS: Technology and Natural Science*, 2(2). https://www.ewadirect.com/proceedings/tns/article/view/16509  
-3. Azzahra, H. R., & Ramadhani, A. D. (2024). Analyzing the Effectiveness of Collaborative Filtering and Content-Based Filtering Methods in Anime Recommendation Systems. *ResearchGate*. https://www.researchgate.net/publication/377022593_Analyzing_the_Effectiveness_of_Collaborative_Filtering_and_Content-Based_Filtering_Methods_in_Anime_Recommendation_Systems  
-4. Dicoding. (n.d.). *Machine Learning Terapan*. https://www.dicoding.com/academies/319-machine-learning-terapan
+[1] N. Ayundini and Adiwijaya, “Content-based anime recommendation,” Medium, 2021. [Online]. Available: https://medium.com/web-mining-is688-spring-2021/content-based-anime-recommendation-4d74038fab67
+
+[2] D. G. Tamtomo, “Sistem rekomendasi anime menggunakan collaborative filtering dan content-based filtering,” TNS: Technology and Natural Science, vol. 2, no. 2, 2023. [Online]. Available: https://www.ewadirect.com/proceedings/tns/article/view/16509
+
+[3] H. R. Azzahra and A. D. Ramadhani, “Analyzing the effectiveness of collaborative filtering and content-based filtering methods in anime recommendation systems,” ResearchGate, 2024. [Online]. Available: https://www.researchgate.net/publication/377022593
+
+[4] Dicoding, “Machine Learning Terapan,” [Online]. Available: https://www.dicoding.com/academies/319-machine-learning-terapan
