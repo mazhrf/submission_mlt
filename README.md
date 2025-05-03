@@ -53,7 +53,7 @@ Untuk mencapai tujuan di atas, digunakan beberapa pendekatan berikut:
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini diperoleh dari platform [Kaggle](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database), yang berjudul **Anime Recommendations Database**. Dataset ini berisi informasi preferensi anime berdasarkan data 76,000 users pada [MAL](myanimelist.net) 8 tahun yang lalu.
+Dataset yang digunakan dalam proyek ini diperoleh dari platform [Kaggle](https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database), yang berjudul **Anime Recommendations Database**. Dataset ini berisi informasi preferensi anime berdasarkan data 76,000 users pada [MAL](https://myanimelist.net) 8 tahun yang lalu.
 
 Dataset terdiri dari **12.294 entri** yang mencakup berbagai atribut penting yang berhubungan dengan karakteristik dan popularitas anime. Informasi ini sangat berguna untuk membangun sistem rekomendasi berbasis konten maupun kolaboratif.
 
@@ -132,9 +132,41 @@ Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 ## Modeling
 Dalam proyek ini, dua algoritma utama digunakan untuk membangun sistem rekomendasi, yaitu **Cosine Similarity** untuk pendekatan *Content-Based Filtering* dan **K-Nearest Neighbors (KNN)** untuk pendekatan *Collaborative Filtering*.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
+### 1. Content-Based Filtering dengan Cosine Similarity
+
+Content-Based Filtering memberikan rekomendasi berdasarkan kemiripan antara item (dalam hal ini anime) yang dihitung dari fitur-fitur kontennya, seperti genre, type, dan rating. Salah satu teknik yang umum digunakan untuk mengukur kemiripan antar item adalah **Cosine Similarity**.
+
+**Cosine Similarity** mengukur sudut kosinus antara dua vektor dalam ruang vektor. Nilai cosine similarity berada pada rentang 0 hingga 1. Nilai 1 menunjukkan bahwa kedua vektor sangat mirip (arahnya sama), sedangkan nilai 0 menunjukkan bahwa kedua vektor benar-benar berbeda (arahnya tegak lurus).
+
+**Rumus Cosine Similarity:**
+
+\[
+\text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \times \|B\|}
+\]
+
+di mana:
+- \( A \) dan \( B \) adalah vektor fitur dari dua anime.
+- \( A \cdot B \) adalah dot product antara dua vektor.
+- \( \|A\| \) dan \( \|B\| \) adalah norma (panjang) masing-masing vektor.
+
+Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai pengguna akan direkomendasikan.
+
+### 2. Collaborative Filtering dengan K-Nearest Neighbors (KNN)
+
+Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengguna, seperti rating. Pendekatan **User-Based KNN** mencari pengguna yang mirip (nearest neighbors) berdasarkan pola rating, lalu merekomendasikan anime yang disukai oleh tetangga terdekat tersebut.
+
+**Langkah-langkah utama:**
+1. Menghitung kemiripan antar pengguna atau item (misalnya dengan cosine similarity).
+2. Menentukan K tetangga terdekat (nearest neighbors) dari pengguna target.
+3. Mengambil item yang disukai oleh tetangga tersebut dan belum pernah ditonton oleh pengguna target.
+4. Mengurutkan item berdasarkan skor gabungan dan merekomendasikan top-N item.
+
+**Kelebihan KNN dalam Collaborative Filtering:**
+- Mudah diimplementasikan dan dipahami.
+- Cocok untuk dataset berukuran kecil hingga menengah.
+- Mampu menangkap pola kolektif dari komunitas pengguna.
+
+Namun, KNN memiliki keterbatasan ketika jumlah data sangat besar (karena komputasi kemiripan antar seluruh pengguna atau item), dan mengalami kesulitan saat menghadapi masalah **cold-start** (pengguna baru atau item baru).
 
 ## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
