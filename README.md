@@ -161,6 +161,34 @@ Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai 
 - Terbatas pada konten yang diketahui; sulit merekomendasikan sesuatu di luar preferensi sebelumnya.
 - Membutuhkan representasi fitur konten yang baik dan konsisten.
 
+#### Penerapan Content-Based Filtering:
+
+**Rekomendasi untuk `Naruto`**
+```
+recommend_anime('Naruto')
+```
+
+| No | Nama Anime | Genre |
+|----|------------|-------|
+| 1 | Naruto Shippuuden Sunny Side Battle | Action, Comedy, Martial Arts, Shounen, Super Power |
+| 2 | Boruto Naruto the Movie Naruto ga Hokage ni Natta Hi | Action, Comedy, Martial Arts, Shounen, Super Power |
+| 3 | Naruto Shippuuden Movie 3 Hi no Ishi wo Tsugu Mono | Action, Comedy, Martial Arts, Shounen, Super Power |
+| 4 | Naruto Soyokazeden Movie Naruto to Mashin to Mittsu no Otsumami Dattebayo!! | Action, Comedy, Martial Arts, Shounen, Super Power |
+| 5 | Naruto Shippuuden Movie 4 The Lost Tower | Action, Comedy, Martial Arts, Shounen, Super Power |
+
+**Rekomendasi untuk `Bungou Stray Dogs`**
+```
+recommend_anime('Bungou Stray Dogs')
+```
+
+| No | Nama Anime | Genre |
+|----|------------|-------|
+| 1 | Bungou Stray Dogs 2nd Season | Mystery, Seinen, Supernatural |
+| 2 | Baccano Specials | Action, Comedy, Historical, Mystery, Seinen, Supernatural |
+| 3 | Baccano | Action, Comedy, Historical, Mystery, Seinen, Supernatural |
+| 4 | Urban Square Kouhaku no Tsuigeki | Action, Mystery, Seinen |
+| 5 | Kara no Kyoukai Mirai Fukuin | Drama, Mystery, Seinen, Supernatural |
+
 ### 2. Collaborative Filtering dengan K-Nearest Neighbors (KNN)
 
 Collaborative Filtering memberikan rekomendasi dengan memanfaatkan interaksi antar item, seperti rating yang diberikan pengguna. Pada pendekatan **Item-Based KNN**, sistem mencari anime yang serupa berdasarkan pola rating yang diberikan oleh pengguna terhadap anime tersebut, kemudian merekomendasikan anime yang memiliki kesamaan dengan yang telah disukai pengguna.
@@ -177,23 +205,6 @@ Keterangan:
 - $x$ dan $y$ adalah dua vektor yang dapat merepresentasikan pengguna atau item.
 - $d(x, y)$ adalah jarak Euclidean antara vektor $x$ dan $y$.
 - $n$ adalah jumlah dimensi (fitur) pada vektor $x$ dan $y$..
-
-**Rumus Prediksi Rating**
-
-$$
-\hat{r}_{u,i} = 
-\frac{
-  \sum\limits_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}
-}{
-  \sum\limits_{j \in N_k(i)} \left| \text{sim}(i, j) \right|
-}
-$$
-
-Keterangan:
-- $\hat{r}_{u,i}$: Prediksi rating dari pengguna $u$ terhadap anime $i$.
-- $\text{sim}(i, j)$: Skor kemiripan antara anime $i$ dan anime $j$.
-- $r_{u,j}$: Rating yang diberikan oleh pengguna $u$ pada anime $j$.
-- $N_k(i)$: Himpunan $k$ anime yang paling mirip dengan anime $i$.
 
 #### Kelebihan:
 - Menangkap pola kolektif atau tren dalam komunitas pengguna.
