@@ -181,9 +181,13 @@ Keterangan:
 **Rumus Prediksi Rating**
 
 $$
-\hat{r}_{u,i} = \frac{\sum_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}}{\sum_{j \in N_k(i)} |\text{sim}(i, j)|}
+\hat{r}_{u,i} = 
+\frac{
+  \sum\limits_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}
+}{
+  \sum\limits_{j \in N_k(i)} \left| \text{sim}(i, j) \right|
+}
 $$
-
 
 Keterangan:
 - $\hat{r}_{u,i}$: Prediksi rating dari pengguna $u$ terhadap anime $i$.
