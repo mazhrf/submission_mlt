@@ -106,8 +106,8 @@ Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 | 5   | Angel Beats!                               | 717,796        |
 | 6   | Code Geass: Hangyaku no Lelouch            | 715,151        |
 | 7   | Naruto                                     | 683,297        |
-| 8   | Steins;Gate                                | 673,572        |
-| 9   | Mirai Nikki (TV)                           | 657,190        |
+| 8   | Steins Gate                                | 673,572        |
+| 9   | Mirai Nikki                                | 657,190        |
 | 10  | Toradora!                                  | 633,817        |
 
 5. **Anime dengan Rating Tertinggi**  
@@ -121,13 +121,13 @@ Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 | 1   | Taka no Tsume 8: Yoshida-kun no X-Files                   | 10.00  |
 | 2   | Spoon-hime no Swing Kitchen                               | 9.60   |
 | 3   | Mogura no Motoro                                          | 9.50   |
-| 4   | Kimi no Na wa.                                            | 9.37   |
+| 4   | Kimi no Na wa                                             | 9.37   |
 | 5   | Kahei no Umi                                              | 9.33   |
 | 6   | Fullmetal Alchemist: Brotherhood                          | 9.26   |
 | 7   | Yakusoku: Africa Mizu to Midori                           | 9.25   |
-| 8   | Gintama°                                                  | 9.25   |
-| 9   | Steins;Gate                                               | 9.17   |
-| 10  | Gintama'                                                  | 9.16   |
+| 8   | Gintama 0                                                 | 9.25   |
+| 9   | Steins Gate                                               | 9.17   |
+| 10  | Gintama 1                                                 | 9.16   |
 
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
