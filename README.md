@@ -140,9 +140,9 @@ Content-Based Filtering memberikan rekomendasi berdasarkan kemiripan antara item
 
 **Rumus Cosine Similarity:**
 ```
-\[
+$$
 \text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \times \|B\|}
-\]
+$$
 ```
 di mana:
 - \( A \) dan \( B \) adalah vektor fitur dari dua anime.
