@@ -151,6 +151,16 @@ di mana:
 
 Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai pengguna akan direkomendasikan.
 
+#### Kelebihan:
+- Tidak bergantung pada interaksi pengguna lain, sehingga dapat direkomendasikan meskipun pengguna baru.
+- Dapat memberikan rekomendasi yang sangat relevan dengan preferensi pengguna.
+- Mudah diimplementasikan dan diinterpretasikan.
+
+#### Kekurangan:
+- Tidak menangkap tren umum atau kolektif dari komunitas pengguna.
+- Terbatas pada konten yang diketahui; sulit merekomendasikan sesuatu di luar preferensi sebelumnya.
+- Membutuhkan representasi fitur konten yang baik dan konsisten.
+
 ### 2. Collaborative Filtering dengan K-Nearest Neighbors (KNN)
 
 Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengguna, seperti rating. Pendekatan **User-Based KNN** mencari pengguna yang mirip (nearest neighbors) berdasarkan pola rating, lalu merekomendasikan anime yang disukai oleh tetangga terdekat tersebut.
@@ -161,12 +171,15 @@ Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengg
 3. Mengambil item yang disukai oleh tetangga tersebut dan belum pernah ditonton oleh pengguna target.
 4. Mengurutkan item berdasarkan skor gabungan dan merekomendasikan top-N item.
 
-**Kelebihan KNN dalam Collaborative Filtering:**
-- Mudah diimplementasikan dan dipahami.
-- Cocok untuk dataset berukuran kecil hingga menengah.
-- Mampu menangkap pola kolektif dari komunitas pengguna.
+#### Kelebihan:
+- Menangkap pola kolektif atau tren dalam komunitas pengguna.
+- Dapat memberikan rekomendasi yang bersifat "surprising" atau tidak terduga, karena berasal dari preferensi pengguna lain.
+- Tidak membutuhkan deskripsi konten dari item (tidak perlu metadata).
 
-Namun, KNN memiliki keterbatasan ketika jumlah data sangat besar (karena komputasi kemiripan antar seluruh pengguna atau item), dan mengalami kesulitan saat menghadapi masalah **cold-start** (pengguna baru atau item baru).
+#### Kekurangan:
+- Rentan terhadap masalah cold-start (untuk pengguna/item baru tanpa cukup interaksi).
+- Performa menurun pada dataset yang sangat besar tanpa optimasi.
+- Bisa menghasilkan rekomendasi bias jika mayoritas pengguna memberikan rating serupa.
 
 ## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
