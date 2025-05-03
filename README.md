@@ -258,8 +258,6 @@ recommend_nimek('Kimi no Na wa')
 
 Pada tahap evaluasi, dua metrik digunakan untuk menilai kualitas hasil clustering, yaitu **Davies-Bouldin Index** dan **Calinski-Harabasz Index**. Metrik ini dipilih karena keduanya umum digunakan dalam skenario unsupervised learning dan tidak memerlukan label ground truth.
 
----
-
 ### 1. Davies-Bouldin (DB)
 
 Davies-Bouldin mengukur seberapa baik cluster terbentuk, dengan mempertimbangkan sebaran internal (intra-cluster) dan jarak antar cluster (inter-cluster).
@@ -271,15 +269,13 @@ DB = \frac{1}{n} \sum_{i=1}^{n} \max_{j \neq i} \left( \frac{s_i + s_j}{d_{i,j}}
 $$
 
 Keterangan:
-- \( s_i \): rata-rata jarak antara titik dalam cluster \(i\) terhadap centroid-nya.
-- \( d_{i,j} \): jarak antara centroid cluster \(i\) dan cluster \(j\).
-- Semakin rendah nilai DB, semakin baik kualitas clustering.
+- $s_i$: rata-rata jarak antara titik dalam cluster $i$ terhadap centroid-nya.
+- $d_{i,j}$: jarak antara centroid cluster $i$ dan cluster $j$.
+- Semakin rendah nilai $DB$, semakin baik kualitas clustering.
 
 **Hasil Evaluasi**:  
 Nilai **Davies-Bouldin = 1.737**  
 Interpretasi: Nilai ini masih tergolong **cukup**, namun menunjukkan bahwa antar cluster belum sepenuhnya terpisah sempurna.
-
----
 
 ### 2. Calinski-Harabasz (CH)
 
@@ -292,16 +288,14 @@ CH = \frac{Tr(B_k)}{Tr(W_k)} \cdot \frac{n - k}{k - 1}
 $$
 
 Keterangan:
-- \( Tr(B_k) \): total dispersi antar cluster (between-cluster dispersion).
-- \( Tr(W_k) \): total dispersi dalam cluster (within-cluster dispersion).
-- \( n \): jumlah total data.
-- \( k \): jumlah cluster.
+- $Tr(B_k)$: total dispersi antar cluster *(between-cluster dispersion)*.
+- $Tr(W_k)$: total dispersi dalam cluster *(within-cluster dispersion)*.
+- $n$: jumlah total data.
+- $k$: jumlah cluster.
 
 **Hasil Evaluasi**:  
 Nilai **Calinski-Harabasz = 5.688**  
 Interpretasi: Nilai ini **cukup rendah**, yang menunjukkan bahwa variansi antar cluster dan dalam cluster masih belum optimal.
-
----
 
 ### Kesimpulan
 
