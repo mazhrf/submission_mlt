@@ -165,15 +165,35 @@ Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai 
 
 Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengguna, seperti rating. Pendekatan **User-Based KNN** mencari pengguna yang mirip berdasarkan pola rating, lalu merekomendasikan anime yang disukai oleh nearest neighbor.
 
+K-Nearest Neighbors (KNN) adalah algoritma non-parametrik yang digunakan untuk klasifikasi dan regresi. Dalam sistem rekomendasi berbasis **Collaborative Filtering**, KNN digunakan untuk mencari tetangga (user atau item) yang paling mirip berdasarkan metrik kemiripan seperti cosine similarity atau jarak Euclidean.
+
 **Langkah-langkah utama:**
 1. Menghitung kemiripan antar pengguna atau item (misalnya dengan cosine similarity).
 2. Menentukan K tetangga terdekat (nearest neighbors) dari pengguna target.
 3. Mengambil item yang disukai oleh tetangga tersebut dan belum pernah ditonton oleh pengguna target.
 4. Mengurutkan item berdasarkan skor gabungan dan merekomendasikan top-N item.
 
+**Rumus Euclidean Distance:**
 $$
 \text{Euclidean Distance} = d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
 $$
+
+Keterangan:
+- \( x \) dan \( y \) adalah dua vektor (misalnya pengguna atau item).
+- \( d(x, y) \) adalah jarak Euclidean antara \( x \) dan \( y \).
+- \( n \) adalah jumlah fitur.
+
+### Rumus Prediksi Rating (Item-Based Collaborative Filtering)
+
+$$
+\hat{r}_{u,i} = \frac{\sum_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}}{\sum_{j \in N_k(i)} |\text{sim}(i, j)|}
+$$
+
+Keterangan:
+- \( \hat{r}_{u,i} \) adalah prediksi rating dari pengguna \( u \) terhadap anime \( i \).
+- \( \text{sim}(i, j) \) adalah skor kemiripan antara anime \( i \) dan anime \( j \).
+- \( r_{u,j} \) adalah rating yang diberikan oleh pengguna \( u \) pada anime \( j \).
+- \( N_k(i) \) adalah himpunan K anime paling mirip dengan anime \( i \).
 
 #### Kelebihan:
 - Menangkap pola kolektif atau tren dalam komunitas pengguna.
