@@ -274,7 +274,12 @@ Keterangan:
 - Semakin rendah nilai $DB$, semakin baik kualitas clustering.
 
 **Hasil Evaluasi**:  
-Nilai **Davies-Bouldin = 1.737**  
+```python
+dbs = davies_bouldin_score(anew, aniname)
+print(f"Davies-Bouldin: {dbs}")
+```
+
+Nilai **Davies-Bouldin: 1.7372932679932307**  
 Interpretasi: Nilai ini masih tergolong **cukup**, namun menunjukkan bahwa antar cluster belum sepenuhnya terpisah sempurna.
 
 ### 2. Calinski-Harabasz (CH)
@@ -294,7 +299,12 @@ Keterangan:
 - $k$: jumlah cluster.
 
 **Hasil Evaluasi**:  
-Nilai **Calinski-Harabasz = 5.688**  
+```python
+ch = calinski_harabasz_score(anew, aniname)
+print("Calinski-Harabasz: ", ch)
+```
+
+Nilai **Calinski-Harabasz = 5.687692131433239**  
 Interpretasi: Nilai ini **cukup rendah**, yang menunjukkan bahwa variansi antar cluster dan dalam cluster masih belum optimal.
 
 ### Kesimpulan
