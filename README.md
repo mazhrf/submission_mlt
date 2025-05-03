@@ -172,7 +172,7 @@ Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengg
 4. Mengurutkan item berdasarkan skor gabungan dan merekomendasikan top-N item.
 
 $$
-Euclidean Distance(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
+\text{Euclidean Distance} = d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
 $$
 
 #### Kelebihan:
