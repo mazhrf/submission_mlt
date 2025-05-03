@@ -163,17 +163,12 @@ Anime yang memiliki nilai cosine similarity tertinggi dengan anime yang disukai 
 
 ### 2. Collaborative Filtering dengan K-Nearest Neighbors (KNN)
 
-Collaborative Filtering memberikan rekomendasi berdasarkan interaksi antar pengguna, seperti rating. Pendekatan **User-Based KNN** mencari pengguna yang mirip berdasarkan pola rating, lalu merekomendasikan anime yang disukai oleh nearest neighbor.
+Collaborative Filtering memberikan rekomendasi dengan memanfaatkan interaksi antar item, seperti rating yang diberikan pengguna. Pada pendekatan **Item-Based KNN**, sistem mencari anime yang serupa berdasarkan pola rating yang diberikan oleh pengguna terhadap anime tersebut, kemudian merekomendasikan anime yang memiliki kesamaan dengan yang telah disukai pengguna.
 
-K-Nearest Neighbors (KNN) adalah algoritma non-parametrik yang digunakan untuk klasifikasi dan regresi. Dalam sistem rekomendasi berbasis **Collaborative Filtering**, KNN digunakan untuk mencari tetangga (user atau item) yang paling mirip berdasarkan metrik kemiripan seperti cosine similarity atau jarak Euclidean.
-
-**Langkah-langkah utama:**
-1. Menghitung kemiripan antar pengguna atau item (misalnya dengan cosine similarity).
-2. Menentukan K tetangga terdekat (nearest neighbors) dari pengguna target.
-3. Mengambil item yang disukai oleh tetangga tersebut dan belum pernah ditonton oleh pengguna target.
-4. Mengurutkan item berdasarkan skor gabungan dan merekomendasikan top-N item.
+K-Nearest Neighbors (KNN) adalah algoritma non-parametrik yang sering digunakan dalam klasifikasi dan regresi. KNN digunakan untuk menemukan tetangga yang paling mirip, berdasarkan metrik kemiripan seperti cosine similarity atau jarak Euclidean. Dalam KNN, kita mempertimbangkan sejumlah tetangga terdekat untuk menentukan kelas atau label dari data yang akan diklasifikasikan.
 
 **Rumus Euclidean Distance:**
+
 $$
 \text{Euclidean Distance} = d(x, y) = \sqrt{\sum_{i=1}^{n} (x_i - y_i)^2}
 $$
