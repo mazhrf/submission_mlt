@@ -178,7 +178,7 @@ Keterangan:
 - \( d(x, y) \) adalah jarak Euclidean antara \( x \) dan \( y \).
 - \( n \) adalah jumlah fitur.
 
-### Rumus Prediksi Rating (Item-Based Collaborative Filtering)
+**Rumus Prediksi Rating**
 
 $$
 \hat{r}_{u,i} = \frac{\sum_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}}{\sum_{j \in N_k(i)} |\text{sim}(i, j)|}
