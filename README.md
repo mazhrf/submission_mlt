@@ -255,12 +255,58 @@ recommend_nimek('Kimi no Na wa')
 | 10 | Sen to Chihiro no Kamikakushi                   | 99.56%           |
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+Pada tahap evaluasi, dua metrik digunakan untuk menilai kualitas hasil clustering, yaitu **Davies-Bouldin Index** dan **Calinski-Harabasz Index**. Metrik ini dipilih karena keduanya umum digunakan dalam skenario unsupervised learning dan tidak memerlukan label ground truth.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+---
+
+### 1. Davies-Bouldin (DB)
+
+Davies-Bouldin mengukur seberapa baik cluster terbentuk, dengan mempertimbangkan sebaran internal (intra-cluster) dan jarak antar cluster (inter-cluster).
+
+**Rumus DB:**
+
+$$
+DB = \frac{1}{n} \sum_{i=1}^{n} \max_{j \neq i} \left( \frac{s_i + s_j}{d_{i,j}} \right)
+$$
+
+Keterangan:
+- \( s_i \): rata-rata jarak antara titik dalam cluster \(i\) terhadap centroid-nya.
+- \( d_{i,j} \): jarak antara centroid cluster \(i\) dan cluster \(j\).
+- Semakin rendah nilai DB, semakin baik kualitas clustering.
+
+**Hasil Evaluasi**:  
+Nilai **Davies-Bouldin = 1.737**  
+Interpretasi: Nilai ini masih tergolong **cukup**, namun menunjukkan bahwa antar cluster belum sepenuhnya terpisah sempurna.
+
+---
+
+### 2. Calinski-Harabasz (CH)
+
+Calinski-Harabasz mengevaluasi rasio antara dispersi antar cluster terhadap dispersi dalam cluster. Semakin tinggi nilai CH, semakin baik kualitas clustering.
+
+**Rumus CH:**
+
+$$
+CH = \frac{Tr(B_k)}{Tr(W_k)} \cdot \frac{n - k}{k - 1}
+$$
+
+Keterangan:
+- \( Tr(B_k) \): total dispersi antar cluster (between-cluster dispersion).
+- \( Tr(W_k) \): total dispersi dalam cluster (within-cluster dispersion).
+- \( n \): jumlah total data.
+- \( k \): jumlah cluster.
+
+**Hasil Evaluasi**:  
+Nilai **Calinski-Harabasz = 5.688**  
+Interpretasi: Nilai ini **cukup rendah**, yang menunjukkan bahwa variansi antar cluster dan dalam cluster masih belum optimal.
+
+---
+
+### Kesimpulan
+
+- Davies-Bouldin Index sebesar **1.737** menunjukkan cluster yang **cukup baik**, namun bisa ditingkatkan.
+- Calinski-Harabasz Index sebesar **5.688** mengindikasikan bahwa struktur cluster masih belum sangat kuat.
 
 **---Ini adalah bagian akhir laporan---**
 
