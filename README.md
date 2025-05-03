@@ -3,7 +3,7 @@ Proyek Akhir dari kelas Machine Learning Terapan.
 
 ## Project Overview
 
-![hy](assets/hyouka.gif)
+![hyouka](assets/hyouka.gif)
 
 Anime adalah bentuk hiburan asal Jepang yang telah mendunia, mencakup berbagai genre seperti aksi, drama, fantasi, dan romansa. Dengan ribuan judul yang tersedia, pengguna sering kali kesulitan memilih anime yang sesuai dengan preferensi mereka. Oleh karena itu, sistem rekomendasi menjadi alat penting untuk membantu pengguna menemukan anime yang relevan dengan minat mereka.
 
@@ -74,12 +74,34 @@ Berikut adalah deskripsi dari setiap fitur yang terdapat dalam dataset utama `an
 
 ### Exploratory Data Analysis (EDA)
 
-## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
+Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+1. **Missing Value**  
+   - Beberapa nilai yang kosong pada kolom **genre** (62 nilai kosong), **type** (25 nilai kosong), dan **rating** (230 nilai kosong).
+   - Diperlukan penanganan nilai-nilai yang hilang atau tidak valid sebelum melakukan pemodelan.
+
+2. **Layanan Penayangan Anime**  
+   - Platform yang paling umum menayangkan anime adalah "TV", disusul oleh "OVA", "Movie", dan "Special".
+
+![type](assets/type.png)
+
+3. **Genre Anime Terpopuler**  
+   - Genre paling populer adalah "Comedy", "Action", "Advnture".
+   - Mayoritas anime memiliki lebih dari satu genre, menunjukkan keragaman tema dalam satu judul.
+
+![genre](assets/genre.png)
+
+4. **Anime dengan Fandom/Komunitas Terbesar**  
+   - Anime seperti **Death Note**, **Shingeki no Kyojin**, dan **Sword Art Online** memiliki jumlah anggota komunitas terbanyak, menandakan popularitas tinggi.
+   - Sebagian besar anime ini berasal dari genre action/supernatural yang memang populer di kalangan penonton.
+
+![fandom](assets/fandom.png)
+
+5. **Anime dengan Rating Tertinggi**  
+   - Beberapa anime dengan rating tertinggi seperti **Taka no Tsume 8** dan **Spoon-hime no Swing Kitchen** memiliki episode tunggal, biasanya dalam bentuk film pendek atau special.
+   - Judul terkenal seperti **Fullmetal Alchemist: Brotherhood** dan **Kimi no Na wa** juga termasuk dalam daftar teratas, menunjukkan kombinasi kualitas produksi dan cerita yang kuat.
+
+![rating](assets/rating.png)
 
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
