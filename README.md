@@ -180,15 +180,14 @@ Keterangan:
 
 **Rumus Prediksi Rating**
 
-$$
-\hat{r}_{u,i} = \frac{\sum_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}}{\sum_{j \in N_k(i)} |\text{sim}(i, j)|}
-$$
+$\hat{r}_{u,i} = \frac{\sum_{j \in N_k(i)} \text{sim}(i, j) \cdot r_{u,j}}{\sum_{j \in N_k(i)} |\text{sim}(i, j)|}$
 
 Keterangan:
-- \( \hat{r}_{u,i} \) adalah prediksi rating dari pengguna \( u \) terhadap anime \( i \).
-- \( \text{sim}(i, j) \) adalah skor kemiripan antara anime \( i \) dan anime \( j \).
-- \( r_{u,j} \) adalah rating yang diberikan oleh pengguna \( u \) pada anime \( j \).
-- \( N_k(i) \) adalah himpunan K anime paling mirip dengan anime \( i \).
+
+- $\hat{r}_{u,i}$: Prediksi rating dari pengguna $u$ terhadap anime $i$.
+- $\text{sim}(i, j)$: Skor kemiripan antara anime $i$ dan anime $j$.
+- $r_{u,j}$: Rating yang diberikan oleh pengguna $u$ pada anime $j$.
+- $N_k(i)$: Himpunan $k$ anime yang paling mirip dengan anime $i$.
 
 #### Kelebihan:
 - Menangkap pola kolektif atau tren dalam komunitas pengguna.
