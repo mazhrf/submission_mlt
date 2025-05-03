@@ -174,9 +174,9 @@ $$
 $$
 
 Keterangan:
-- \( x \) dan \( y \) adalah dua vektor (misalnya pengguna atau item).
-- \( d(x, y) \) adalah jarak Euclidean antara \( x \) dan \( y \).
-- \( n \) adalah jumlah fitur.
+- $x$ dan $y$ adalah dua vektor yang dapat merepresentasikan pengguna atau item.
+- $d(x, y)$ adalah jarak Euclidean antara vektor $x$ dan $y$.
+- $n$ adalah jumlah dimensi (fitur) pada vektor $x$ dan $y$..
 
 **Rumus Prediksi Rating**
 
