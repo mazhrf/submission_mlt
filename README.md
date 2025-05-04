@@ -274,12 +274,23 @@ recommend_nimek('Kimi no Na wa')
 
 Pada tahap evaluasi, dua metrik digunakan untuk menilai kualitas hasil clustering, yaitu **Davies-Bouldin Index** dan **Calinski-Harabasz Index**. Metrik ini dipilih karena keduanya umum digunakan dalam skenario unsupervised learning dan tidak memerlukan label ground truth.
 
+### 1. Precision
+Precision mengukur seberapa banyak rekomendasi yang diberikan benar-benar relevan dengan kebutuhan pengguna.
+
+**Rumus Precision:**
 $$
 Precision = \frac{\text{Jumlah rekomendasi relevan}}{\text{Jumlah total rekomendasi}}
 $$
 
+**Hasil Evaluasi**:  
+```python
+precision = sum(predict) / len(predict)
+print(f'Precision: {precision:.2f}')
+```
+
+
 ### 2. Recall
-**Recall** mengukur seberapa banyak item relevan yang berhasil ditemukan oleh sistem dari seluruh item relevan yang tersedia dalam dataset.
+Recall mengukur seberapa banyak item relevan yang berhasil ditemukan oleh sistem dari seluruh item relevan yang tersedia dalam dataset.
 
 **Rumus Recall:**
 
@@ -287,8 +298,14 @@ $$
 Recall = \frac{\text{Jumlah rekomendasi relevan}}{\text{Jumlah total item relevan dalam dataset}}
 $$
 
+**Hasil Evaluasi**:  
+```python
+precision = sum(predict) / len(predict)
+print(f'Precision: {precision:.2f}')
+```
+
 ### 3. NDCG (Normalized Discounted Cumulative Gain)
-**NDCG** mengukur kualitas urutan rekomendasi yang diberikan, dengan mempertimbangkan posisi item dalam daftar rekomendasi.
+NDCG mengukur kualitas urutan rekomendasi yang diberikan, dengan mempertimbangkan posisi item dalam daftar rekomendasi.
 
 **Rumus DCG:**
 
@@ -306,6 +323,17 @@ Keterangan:
 - $rel_i$: relevansi item ke-$i$ dalam urutan rekomendasi.
 - $i$: posisi item dalam urutan rekomendasi.
 - Ideal DCG adalah DCG untuk urutan yang paling optimal.
+
+**Hasil Evaluasi**:  
+```python
+def dcg(relevancies):
+    return sum([rel / np.log2(idx + 2) for idx, rel in enumerate(relevancies)])
+
+ideal = sorted(predict, reverse=True)
+
+ndcg = dcg(predict) / dcg(ideal) if dcg(ideal) != 0 else 0
+print(f'NDCG: {ndcg:.2f}')
+```
 
 ### 4. Davies-Bouldin (DB)
 
