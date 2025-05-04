@@ -129,6 +129,22 @@ Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 | 9   | Steins Gate                                               | 9.17   |
 | 10  | Gintama 1                                                 | 9.16   |
 
+## Data Preparation
+Pada tahap ini, dilakukan pembersihan data (data cleaning) terhadap kolom `name` pada dataset. Tujuan dari proses ini adalah untuk memastikan bahwa data bersih dari karakter-karakter yang tidak diinginkan dan siap untuk digunakan dalam proses analisis atau pemodelan.
+
+```python
+def cleaning(txt):
+    txt = html.unescape(txt)
+    txt = re.sub(r"[^\w\s]", "", txt)
+    return txt.strip()
+
+anime['name'] = anime['name'].apply(cleaning)
+```
+
+`html.unescape(txt)`: Mengubah entitas HTML menjadi karakter aslinya.
+`re.sub(r"[^\w\s]", "", txt)`: Menghapus semua karakter non-alfanumerik kecuali spasi.
+`txt.strip()`: Menghapus spasi kosong di awal dan akhir string, memastikan tidak ada karakter whitespace yang tersisa.
+
 ## Modeling
 Dalam proyek ini, dua algoritma utama digunakan untuk membangun sistem rekomendasi, yaitu **Cosine Similarity** untuk pendekatan *Content-Based Filtering* dan **K-Nearest Neighbors (KNN)** untuk pendekatan *Collaborative Filtering*.
 
