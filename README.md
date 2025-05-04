@@ -272,12 +272,13 @@ recommend_nimek('Kimi no Na wa')
 
 ## Evaluation
 
-Pada tahap evaluasi, dua metrik digunakan untuk menilai kualitas hasil clustering, yaitu **Davies-Bouldin Index** dan **Calinski-Harabasz Index**. Metrik ini dipilih karena keduanya umum digunakan dalam skenario unsupervised learning dan tidak memerlukan label ground truth.
+Pada **Content-Based Filtering**, evaluasi dilakukan dengan menggunakan metrik **Precision**, **Recall**, dan **NDCG**. Metrik-metrik ini digunakan untuk menilai seberapa baik rekomendasi yang diberikan sesuai dengan preferensi pengguna, berdasarkan kesesuaian fitur konten, seperti genre. Pada **Collaborative Filtering**, evaluasi dilakukan dengan menggunakan metrik **Davies-Bouldin Index (DB)** dan **Calinski-Harabasz Index (CH)**. Kedua metrik ini digunakan untuk menilai kualitas clustering berdasarkan kesamaan preferensi antar pengguna dan item yang direkomendasikan.
 
 ### 1. Precision
 Precision mengukur seberapa banyak rekomendasi yang diberikan benar-benar relevan dengan kebutuhan pengguna.
 
 **Rumus Precision:**
+
 $$
 Precision = \frac{\text{Jumlah rekomendasi relevan}}{\text{Jumlah total rekomendasi}}
 $$
@@ -288,6 +289,8 @@ precision = sum(predict) / len(predict)
 print(f'Precision: {precision:.2f}')
 ```
 
+Nilai Precision: **1.00**  
+Interpretasi: Nilai menunjukkan bahwa semua rekomendasi yang diberikan oleh sistem sangat relevan dengan preferensi pengguna, setiap rekomendasi yang muncul sesuai dengan genre yang dicari.
 
 ### 2. Recall
 Recall mengukur seberapa banyak item relevan yang berhasil ditemukan oleh sistem dari seluruh item relevan yang tersedia dalam dataset.
@@ -303,6 +306,9 @@ $$
 precision = sum(predict) / len(predict)
 print(f'Precision: {precision:.2f}')
 ```
+
+Nilai Recall: **0.0007**  
+Interpretasi: Nilai mengindikasikan bahwa sistem hanya berhasil menemukan 5 item relevan dari total 7085 item relevan yang ada dalam dataset.
 
 ### 3. NDCG (Normalized Discounted Cumulative Gain)
 NDCG mengukur kualitas urutan rekomendasi yang diberikan, dengan mempertimbangkan posisi item dalam daftar rekomendasi.
@@ -334,6 +340,9 @@ ideal = sorted(predict, reverse=True)
 ndcg = dcg(predict) / dcg(ideal) if dcg(ideal) != 0 else 0
 print(f'NDCG: {ndcg:.2f}')
 ```
+
+Nilai NDCG: **1.00**  
+Interpretasi: Nilai menunjukkan bahwa urutan rekomendasi yang diberikan oleh sistem sangat optimal, dengan item yang lebih relevan ditempatkan di posisi yang lebih tinggi dalam daftar rekomendasi.
 
 ### 4. Davies-Bouldin (DB)
 
