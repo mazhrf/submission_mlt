@@ -141,9 +141,9 @@ def cleaning(txt):
 anime['name'] = anime['name'].apply(cleaning)
 ```
 
-`html.unescape(txt)`: Mengubah entitas HTML menjadi karakter aslinya.
-`re.sub(r"[^\w\s]", "", txt)`: Menghapus semua karakter non-alfanumerik kecuali spasi.
-`txt.strip()`: Menghapus spasi kosong di awal dan akhir string, memastikan tidak ada karakter whitespace yang tersisa.
+`html.unescape(txt)`: Mengubah entitas HTML menjadi karakter aslinya.   
+`re.sub(r"[^\w\s]", "", txt)`: Menghapus semua karakter non-alfanumerik kecuali spasi.   
+`txt.strip()`: Menghapus spasi kosong di awal dan akhir string, memastikan tidak ada karakter whitespace yang tersisa.   
 
 ## Modeling
 Dalam proyek ini, dua algoritma utama digunakan untuk membangun sistem rekomendasi, yaitu **Cosine Similarity** untuk pendekatan *Content-Based Filtering* dan **K-Nearest Neighbors (KNN)** untuk pendekatan *Collaborative Filtering*.
