@@ -274,7 +274,40 @@ recommend_nimek('Kimi no Na wa')
 
 Pada tahap evaluasi, dua metrik digunakan untuk menilai kualitas hasil clustering, yaitu **Davies-Bouldin Index** dan **Calinski-Harabasz Index**. Metrik ini dipilih karena keduanya umum digunakan dalam skenario unsupervised learning dan tidak memerlukan label ground truth.
 
-### 1. Davies-Bouldin (DB)
+$$
+Precision = \frac{\text{Jumlah rekomendasi relevan}}{\text{Jumlah total rekomendasi}}
+$$
+
+### 2. Recall
+**Recall** mengukur seberapa banyak item relevan yang berhasil ditemukan oleh sistem dari seluruh item relevan yang tersedia dalam dataset.
+
+**Rumus Recall:**
+
+$$
+Recall = \frac{\text{Jumlah rekomendasi relevan}}{\text{Jumlah total item relevan dalam dataset}}
+$$
+
+### 3. NDCG (Normalized Discounted Cumulative Gain)
+**NDCG** mengukur kualitas urutan rekomendasi yang diberikan, dengan mempertimbangkan posisi item dalam daftar rekomendasi.
+
+**Rumus DCG:**
+
+$$
+DCG = \sum_{i=1}^{n} \frac{rel_i}{\log_2(i + 1)}
+$$
+
+**Rumus NDCG:**
+
+$$
+NDCG = \frac{DCG}{\text{Ideal DCG}}
+$$
+
+Keterangan:
+- $rel_i$: relevansi item ke-$i$ dalam urutan rekomendasi.
+- $i$: posisi item dalam urutan rekomendasi.
+- Ideal DCG adalah DCG untuk urutan yang paling optimal.
+
+### 4. Davies-Bouldin (DB)
 
 Davies-Bouldin mengukur seberapa baik cluster terbentuk, dengan mempertimbangkan sebaran internal (intra-cluster) dan jarak antar cluster (inter-cluster).
 
@@ -298,7 +331,7 @@ print(f"Davies-Bouldin: {dbs}")
 Nilai Davies-Bouldin: **1.7372932679932307**  
 Interpretasi: Nilai ini masih tergolong **cukup**, namun menunjukkan bahwa antar cluster belum sepenuhnya terpisah sempurna.
 
-### 2. Calinski-Harabasz (CH)
+### 5. Calinski-Harabasz (CH)
 
 Calinski-Harabasz mengevaluasi rasio antara dispersi antar cluster terhadap dispersi dalam cluster. Semakin tinggi nilai CH, semakin baik kualitas clustering.
 
