@@ -167,6 +167,7 @@ anime['name'] = anime['name'].apply(cleaning)
 1. **Ekstraksi Fitur Genre dengan TF-IDF**
 Menggunakan metode **TF-IDF (Term Frequency-Inverse Document Frequency)** untuk mengonversi data teks pada kolom `genre` menjadi vektor numerik yang mencerminkan pentingnya kata dalam dokumen.
 
+* **Membuat dan Melatih TF-IDF Vectorizer**
 ```python
 # Membuat dan Melatih TF-IDF Vectorizer
 
@@ -176,6 +177,7 @@ vct.fit(devnime['genre'])
 
 `TfidfVectorizer(stop_words='english')` berfungsi untuk membuang kata-kata umum (stopwords) dalam bahasa Inggris dan membangun model TF-IDF dari kolom `genre`.
 
+* **Melihat Daftar Fitur (Kata Unik)**
 ```python
 # Melihat Daftar Fitur (Kata Unik)
 
@@ -194,6 +196,7 @@ array(['action', 'adventure', 'ai', 'arts', 'cars', 'comedy', 'dementia',
 
 `get_feature_names_out()` digunakan untuk menampilkan semua fitur (kata unik) yang berhasil diekstrak dari kolom `genre`. Setiap kata akan menjadi satu dimensi dalam matriks TF-IDF.
 
+* **Mengubah Genre Menjadi Matriks TF-IDF**
 ```python
 # Mengubah Genre Menjadi Matriks TF-IDF
 
@@ -202,6 +205,7 @@ vct_matrix = vct.fit_transform(devnime['genre'])
 
 `fit_transform()` digunakan untuk melakukan pembelajaran (fit) sekaligus mengubah (transform) data teks menjadi bentuk vektor numerik berdasarkan bobot TF-IDF.
 
+* **Melihat Ukuran Matriks TF-IDF**
 ```python
 # Melihat Ukuran Matriks TF-IDF
 
@@ -213,6 +217,7 @@ vct_matrix.shape
 
 `vct_matrix.shape` mengembalikan tuple (jumlah_data, jumlah_fitur) yang menunjukkan ukuran matriks hasil TF-IDF. Jumlah baris sesuai jumlah anime, dan jumlah kolom sesuai banyaknya kata unik.
 
+* **Mengubah Matriks Menjadi Format Padat (Dense)**
 ```python
 # Mengubah Matriks Menjadi Format Padat (Dense)
 
@@ -221,6 +226,7 @@ vct_matrix.todense()
 
 `todense()` digunakan untuk mengubah matriks TF-IDF dari bentuk sparse matrix menjadi dense matrix (matriks padat), sehingga lebih mudah untuk visualisasi atau debugging meskipun lebih berat secara memori.
 
+* **Membuat Dataframe Matriks TF-IDF**
 ```python
 # Membuat Dataframe Matriks TF-IDF
 
@@ -235,6 +241,7 @@ Menampilkan 10 baris dan 22 kolom acak dari matriks TF-IDF dalam bentuk DataFram
 
 2. **Cosine Similarity**
 
+* **Menghitung Kemiripan dengan Cosine Similarity**
 ```python
 # Menghitung Kemiripan dengan Cosine Similarity
 
@@ -244,6 +251,7 @@ cs
 
 `cosine_similarity()` menghitung nilai kesamaan antar baris dalam matriks TF-IDF. Nilai berkisar antara 0 (tidak mirip) sampai 1 (sangat mirip).
 
+* **Membuat Dataframe Cosine Similarity**
 ```python
 # Membuat Dataframe Cosine Similarity
 
@@ -255,8 +263,9 @@ cs_df.sample(5, axis=1).sample(5, axis=0)
 
 Matriks cosine similarity dikonversi menjadi sebuah DataFrame dengan indeks dan kolom menggunakan nama anime agar lebih mudah dibaca.`sample(5, axis=1)` dan `sample(5, axis=0)` menampilkan sebagian data secara acak (5 anime) sebagai sampel dari keseluruhan kemiripan.
 
+* **Visualisasi Matriks Cosine Similarity (Heatmap) dengan sampel acak**
 ```python
-# Visualisasi Matriks Cosine Similarity (Heatmap) dengan sampel acak.
+# Visualisasi Matriks Cosine Similarity (Heatmap) dengan sampel acak
 
 subset = cs_df.sample(3, axis=1).sample(3, axis=0)
 
