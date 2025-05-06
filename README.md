@@ -130,7 +130,24 @@ Beberapa langkah yang telah dilakukan untuk memahami data lebih dalam:
 | 10  | Gintama 1                                                 | 9.16   |
 
 ## Data Preparation
-Pada tahap ini, dilakukan pembersihan data (data cleaning) terhadap kolom `name` pada dataset. Tujuan dari proses ini adalah untuk memastikan bahwa data bersih dari karakter-karakter yang tidak diinginkan dan siap untuk digunakan dalam proses analisis atau pemodelan.
+Pada tahap ini, dilakukan berbagai langkah pembersihan dan transformasi data untuk memastikan data yang digunakan bersih, relevan, dan siap digunakan dalam proses pembangunan model rekomendasi. Proses ini dibagi menjadi dua pendekatan, yaitu Content-Based Filtering dan Collaborative Filtering.
+
+### Menangani **missing value / null** pada `anime.csv`
+Menghapus baris yang mengandung nilai kosong (null) untuk menghindari error saat analisis dan memastikan integritas data.
+
+```python
+anime = anime.dropna()
+```
+
+### Menangani **duplicate** pada `rating.csv`
+Menghapus data yang duplikat agar model tidak mempelajari informasi yang redundan, yang dapat memengaruhi akurasi model.
+
+```python
+rating = rating.drop_duplicates()
+```
+
+### Membersihkan simbol menggunakan **regex** pada data (`name`)
+Melakukan pembersihan terhadap karakter-karakter yang tidak diinginkan dalam kolom name, seperti simbol dan entitas HTML.
 
 ```python
 def cleaning(txt):
@@ -144,6 +161,134 @@ anime['name'] = anime['name'].apply(cleaning)
 `html.unescape(txt)`: Mengubah entitas HTML menjadi karakter aslinya.   
 `re.sub(r"[^\w\s]", "", txt)`: Menghapus semua karakter non-alfanumerik kecuali spasi.   
 `txt.strip()`: Menghapus spasi kosong di awal dan akhir string, memastikan tidak ada karakter whitespace yang tersisa.   
+
+### Data Preparation (Content-Based Filtering)
+
+1. **Ekstraksi Fitur Genre dengan TF-IDF**
+Menggunakan metode **TF-IDF (Term Frequency-Inverse Document Frequency)** untuk mengonversi data teks pada kolom `genre` menjadi vektor numerik yang mencerminkan pentingnya kata dalam dokumen.
+
+```python
+# Membuat dan Melatih TF-IDF Vectorizer
+
+vct = TfidfVectorizer(stop_words='english')
+vct.fit(devnime['genre'])
+```
+
+`TfidfVectorizer(stop_words='english')` berfungsi untuk membuang kata-kata umum (stopwords) dalam bahasa Inggris dan membangun model TF-IDF dari kolom `genre`.
+
+```python
+# Melihat Daftar Fitur (Kata Unik)
+
+vct.get_feature_names_out()
+
+# Output:
+array(['action', 'adventure', 'ai', 'arts', 'cars', 'comedy', 'dementia',
+       'demons', 'drama', 'ecchi', 'fantasy', 'fi', 'game', 'harem',
+       'hentai', 'historical', 'horror', 'josei', 'kids', 'life', 'magic',
+       'martial', 'mecha', 'military', 'music', 'mystery', 'parody',
+       'police', 'power', 'psychological', 'romance', 'samurai', 'school',
+       'sci', 'seinen', 'shoujo', 'shounen', 'slice', 'space', 'sports',
+       'super', 'supernatural', 'thriller', 'vampire', 'yaoi', 'yuri'],
+      dtype=object)
+```
+
+`get_feature_names_out()` digunakan untuk menampilkan semua fitur (kata unik) yang berhasil diekstrak dari kolom `genre`. Setiap kata akan menjadi satu dimensi dalam matriks TF-IDF.
+
+```python
+# Mengubah Genre Menjadi Matriks TF-IDF
+
+vct_matrix = vct.fit_transform(devnime['genre'])
+```
+
+`fit_transform()` digunakan untuk melakukan pembelajaran (fit) sekaligus mengubah (transform) data teks menjadi bentuk vektor numerik berdasarkan bobot TF-IDF.
+
+```python
+# Melihat Ukuran Matriks TF-IDF
+
+vct_matrix.shape
+
+# Output:
+(12017, 46)
+```
+
+`vct_matrix.shape` mengembalikan tuple (jumlah_data, jumlah_fitur) yang menunjukkan ukuran matriks hasil TF-IDF. Jumlah baris sesuai jumlah anime, dan jumlah kolom sesuai banyaknya kata unik.
+
+```python
+# Mengubah Matriks Menjadi Format Padat (Dense)
+
+vct_matrix.todense()
+```
+
+`todense()` digunakan untuk mengubah matriks TF-IDF dari bentuk sparse matrix menjadi dense matrix (matriks padat), sehingga lebih mudah untuk visualisasi atau debugging meskipun lebih berat secara memori.
+
+```python
+# Membuat Dataframe Matriks TF-IDF
+
+pd.DataFrame(
+    vct_matrix.todense(),
+    columns=vct.get_feature_names_out(),
+    index=devnime.genre
+).sample(22, axis=1).sample(10, axis=0)
+```
+
+Menampilkan 10 baris dan 22 kolom acak dari matriks TF-IDF dalam bentuk DataFrame, berguna untuk inspeksi data.
+
+2. **Cosine Similarity**
+
+```python
+# Menghitung Kemiripan dengan Cosine Similarity
+
+cs = cosine_similarity(vct_matrix)
+cs
+```
+
+`cosine_similarity()` menghitung nilai kesamaan antar baris dalam matriks TF-IDF. Nilai berkisar antara 0 (tidak mirip) sampai 1 (sangat mirip).
+
+```python
+# Membuat Dataframe Cosine Similarity
+
+cs_df = pd.DataFrame(cs, index=devnime['name'], columns=devnime['name'])
+print('Shape:', cs_df.shape)
+
+cs_df.sample(5, axis=1).sample(5, axis=0)
+```
+
+Matriks cosine similarity dikonversi menjadi sebuah DataFrame dengan indeks dan kolom menggunakan nama anime agar lebih mudah dibaca.`sample(5, axis=1)` dan `sample(5, axis=0)` menampilkan sebagian data secara acak (5 anime) sebagai sampel dari keseluruhan kemiripan.
+
+```python
+# Visualisasi Matriks Cosine Similarity (Heatmap) dengan sampel acak.
+
+subset = cs_df.sample(3, axis=1).sample(3, axis=0)
+
+plt.figure(figsize=(12, 8))
+sns.heatmap(subset, annot=False, cmap="coolwarm", linewidths=0.5)
+plt.title("Rekomendasi Anime")
+plt.xticks(rotation=90)
+plt.yticks(rotation=0)
+plt.tight_layout()
+plt.xlabel(' ')
+plt.ylabel(' ')
+plt.show()
+```
+
+`subset` adalah potongan kecil dari `cs_df` yang dipilih secara acak (3 anime x 3 anime) agar memudahkan visualisasi. Visualisasi ini membantu memahami hubungan antar anime berdasarkan genre secara intuitif.
+
+### Data Preparation (Collaborative Filtering)
+
+aniname = pd.DataFrame({'Nama Anime': anime['name']})
+
+print(aniname.head())
+
+anime.set_index('name', inplace=True)
+
+anew = pd.get_dummies(anime_ngb[['type']])
+anew = pd.concat([anime_ngb, anew], axis=1)
+anew = anew.drop(columns='type')
+
+anew.head()
+
+knn = NearestNeighbors(metric='euclidean')
+knn.fit(anew)
 
 ## Modeling
 Dalam proyek ini, dua algoritma utama digunakan untuk membangun sistem rekomendasi, yaitu **Cosine Similarity** untuk pendekatan *Content-Based Filtering* dan **K-Nearest Neighbors (KNN)** untuk pendekatan *Collaborative Filtering*.
