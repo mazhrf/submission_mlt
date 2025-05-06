@@ -284,20 +284,44 @@ plt.show()
 
 ### Data Preparation (Collaborative Filtering)
 
+1. **Menyiapkan Dataframe Nama Anime**
+
+```python
 aniname = pd.DataFrame({'Nama Anime': anime['name']})
 
 print(aniname.head())
+```
 
+Membuat DataFrame baru yang hanya memuat nama-nama anime untuk digunakan sebagai referensi.
+
+2. **Menjadikan Nama sebagai Index**
+
+```python
 anime.set_index('name', inplace=True)
+```
 
+Mengubah kolom `name` menjadi indeks utama DataFrame agar memudahkan proses pemetaan saat merekomendasikan anime.
+
+3. **One-Hot Encoding pada Kolom `type`**
+
+```python
 anew = pd.get_dummies(anime_ngb[['type']])
 anew = pd.concat([anime_ngb, anew], axis=1)
 anew = anew.drop(columns='type')
 
 anew.head()
+```
 
+Menggunakan `get_dummies()` untuk mengubah kategori pada kolom `type` (seperti TV, Movie, OVA, dll.) menjadi format numerik (one-hot encoding). Data hasil encoding digabung kembali ke DataFrame utama (`anime_ngb`), dan kolom `type` asli dihapus karena sudah direpresentasikan secara numerik.
+
+4. **Penerapan K-Nearest (KNN)**
+
+```python
 knn = NearestNeighbors(metric='euclidean')
 knn.fit(anew)
+```
+
+Membuat model KNN dengan metrik jarak `euclidean` untuk mengukur kedekatan antar anime. Model ini akan digunakan untuk menemukan anime yang mirip berdasarkan vektor hasil one-hot encoding.
 
 ## Modeling
 Dalam proyek ini, dua algoritma utama digunakan untuk membangun sistem rekomendasi, yaitu **Cosine Similarity** untuk pendekatan *Content-Based Filtering* dan **K-Nearest Neighbors (KNN)** untuk pendekatan *Collaborative Filtering*.
