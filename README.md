@@ -291,7 +291,7 @@ plt.show()
 ## Modeling
 Dalam proyek ini, algoritma utama **Cosine Similarity** digunakan untuk membangun sistem rekomendasi dengan pendekatan *Content-Based Filtering*.
 
-### 1. Content-Based Filtering dengan Cosine Similarity
+### Content-Based Filtering dengan Cosine Similarity
 
 Content-Based Filtering memberikan rekomendasi berdasarkan kemiripan antara item (dalam hal ini anime) yang dihitung dari fitur-fitur kontennya, seperti genre, type, dan rating. Salah satu teknik yang umum digunakan untuk mengukur kemiripan antar item adalah **Cosine Similarity**.
 
